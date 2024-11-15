@@ -1,0 +1,87 @@
+.MainMap {
+   display: flex;
+}
+
+.MainMap-main {
+   position: relative;
+   margin: 30px 20px;
+   width: 576px;
+   height: 778px;
+   background-size: contain;
+   background-repeat: no-repeat;
+}
+
+.MainMap-sub {
+   height: 40px;
+   margin: 30px 20px;
+   background-color: yellow;
+}
+
+.MainMap-main div {
+   position: absolute;
+   width: 45px;
+   height: 60px;
+}
+
+.MainMap-main div:hover {
+   cursor: pointer;
+}
+
+.MainMap-main img {
+   display: block;
+   width: 45px;
+}
+.MainMap-main p {
+   margin-top: -5px;
+   font-size: 12px;
+   text-align: center;
+}
+
+.tableRow {
+   padding: 0;
+   line-height: 53px;
+}
+
+.tableRow img {
+   margin-bottom: -8px;
+}
+
+.Seoul {
+   top: 22%;
+   left: 33%;
+}
+
+.Incheon {
+   top: 28%;
+   left: 25%;
+}
+
+.Chuncheon {
+   top: 16%;
+   left: 50%;
+}
+
+.Daejeon {
+   top: 40%;
+   left: 36%;
+}
+
+.Daegu {
+   top: 53%;
+   left: 60%;
+}
+
+.Busan {
+   top: 63%;
+   left: 70%;
+}
+
+.Gwangju {
+   top: 67%;
+   left: 26%;
+}
+
+.Jeju {
+   top: 87%;
+   left: 21%;
+}
