@@ -6,7 +6,7 @@ import KaKaoMap from '../components/KaKaoMap'
 function KakaoSearch() {
    return (
       <Wrap>
-         <Menu>1</Menu>
+         <Menu></Menu>
          <KaKaoMap></KaKaoMap>
       </Wrap>
    )

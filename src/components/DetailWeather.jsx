@@ -60,7 +60,6 @@ function DetailWeather() {
    if (loading) return <p>Loading...</p>
    if (error) return <p>Error: {error}</p>
 
-   console.log(airPollution)
    let date = new Date()
 
    return (
@@ -69,7 +68,7 @@ function DetailWeather() {
             <Box sx={{ flexGrow: 1 }}>
                <Grid container spacing={1}>
                   <Grid size={6}>
-                     <Item sx={{ height: '90%', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '1em' }}>
+                     <Item sx={{ height: '90%', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '1em', backgroundImage: `url(/images/${weather.weather[0].icon.substr(0, 2)}.jpg)`, backgroundSize: 'cover' }}>
                         <p>{date.toLocaleString()}</p>
                         <h2>
                            {naming(city)},<img src={'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'} alt="icon" style={{ marginBottom: '-15px' }} />

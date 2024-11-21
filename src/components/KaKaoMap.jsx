@@ -32,7 +32,6 @@ function KaKaoMap() {
       })
    }, [])
 
-   console.log(latlonWeather)
    return (
       <div>
          <div id="map" style={{ width: '600px', height: '450px', margin: '10px' }}></div>

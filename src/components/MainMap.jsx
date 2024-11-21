@@ -32,8 +32,6 @@ function MainMap() {
    if (loading || yt_loading) return <p>Loading...</p>
    if (error || yt_error) return <p>Error: {error}</p>
 
-   console.log(video)
-
    return (
       <>
          {allWeathers && video && (
