@@ -1,12 +1,18 @@
 header {
    min-width: 240px;
    width: 240px;
-   height: 100vh;
-   background-color: #f5f6fa;
    text-align: center;
+   background-color: #f5f6fa;
+   height: 98vh;
+   min-height: 838px;
+}
+
+nav {
+   position: sticky;
+   top: 0px;
 }
 
 header li img {
    width: 60%;
-   margin: 20px;
+   margin: 20px 0;
 }

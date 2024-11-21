@@ -10,7 +10,8 @@ const fetchFromApi = async (url, params = {}) => {
    } catch (error) {}
 }
 
-export const getAllCityWeather = async () => {
+// 8개도시 현재날씨
+export const getAllCityWeather = () => {
    const params = {
       appid: key,
       lang: 'kr',
@@ -29,4 +30,53 @@ export const getAllCityWeather = async () => {
    }
 
    return fetchFromApi(base_url + 'group', params)
+}
+
+// 5일치 예보
+export const getDetailCityWeather = (city) => {
+   const params = {
+      appid: key,
+      lang: 'kr',
+      units: 'metric',
+      q: city,
+   }
+
+   return fetchFromApi(base_url + 'forecast', params)
+}
+
+// 대기 오염도
+export const getAirPollution = (lat, lon) => {
+   const params = {
+      lat,
+      lon,
+      appid: key,
+   }
+   return fetchFromApi(base_url + 'air_pollution/forecast', params)
+}
+
+// 단일도시 날씨
+
+export const getWeather = (city) => {
+   const params = {
+      appid: key,
+      lang: 'kr',
+      units: 'metric',
+      q: city,
+   }
+
+   return fetchFromApi(base_url + 'weather', params)
+}
+
+// 위도, 경도 날씨
+
+export const getLatlonWeather = (lat, lon) => {
+   const params = {
+      appid: key,
+      lang: 'kr',
+      units: 'metric',
+      lat,
+      lon,
+   }
+
+   return fetchFromApi(base_url + 'weather', params)
 }

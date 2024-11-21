@@ -23,10 +23,6 @@
    height: 60px;
 }
 
-.MainMap-main div:hover {
-   cursor: pointer;
-}
-
 .MainMap-main img {
    display: block;
    width: 45px;
@@ -35,11 +31,6 @@
    margin-top: -5px;
    font-size: 12px;
    text-align: center;
-}
-
-.tableRow {
-   padding: 0;
-   line-height: 53px;
 }
 
 .tableRow img {

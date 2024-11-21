@@ -33,8 +33,10 @@ function Menu() {
          <nav>
             <List
                subheader={
-                  <ListSubheader sx={{ backgroundColor: '#f5f6fa' }}>
-                     <img src="/images/logo.png"></img>
+                  <ListSubheader sx={{ backgroundColor: '#f5f6fa', position: 'relative' }}>
+                     <NavLink to="/">
+                        <img src="/images/logo.png"></img>
+                     </NavLink>
                   </ListSubheader>
                }
             >
@@ -125,7 +127,7 @@ function Menu() {
                         </ListItemButton>
                      </List>
                   </NavLink>
-                  <NavLink to="/detail/Jeju">
+                  <NavLink to="/detail/Jeju%20City">
                      <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                            <ListItemIcon>

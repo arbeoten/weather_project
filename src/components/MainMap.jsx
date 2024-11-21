@@ -2,7 +2,9 @@ import './css/MainMap.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchAllWeathers } from '../features/weatherSlice'
-
+import { fetchYoutube } from '../features/youtubeSlice'
+import { Link } from 'react-router-dom'
+import Youtube from 'react-youtube'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -14,8 +16,10 @@ import Paper from '@mui/material/Paper'
 function MainMap() {
    const dispatch = useDispatch()
    const { allWeathers, error, loading } = useSelector((state) => state.weathers)
+   const { video, yt_error, yt_loading } = useSelector((state) => state.youtube)
    useEffect(() => {
       dispatch(fetchAllWeathers())
+      dispatch(fetchYoutube())
    }, [dispatch])
 
    function createData(name, icon, description, temp, wind) {
@@ -24,21 +28,23 @@ function MainMap() {
 
    const rows = allWeathers.map((weather) => createData(weather.name, weather.weather[0].icon, weather.weather[0].description, weather.main.temp, weather.wind.speed))
 
-   if (loading) return <p>Loading...</p>
-   if (error) return <p>Error: {error}</p>
+   if (loading || yt_loading) return <p>Loading...</p>
+   if (error || yt_error) return <p>Error: {error}</p>
 
-   console.log(allWeathers)
+   console.log(video)
 
    return (
       <>
-         {allWeathers && (
+         {allWeathers && video && (
             <div className="MainMap">
                <div className="MainMap-main" style={{ backgroundImage: 'url(/images/city_map.png)' }}>
                   {allWeathers.map((weather) => (
                      <div key={weather.id} className={weather.name}>
-                        <img src={'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'} alt="city" />
-                        <p>{weather.main.temp.toFixed(1)}℃</p>
-                        <p>{weather.name}</p>
+                        <Link to={'/detail/' + weather.name}>
+                           <img src={'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'} alt="city" />
+                           <p>{weather.main.temp.toFixed(1)}℃</p>
+                           <p>{weather.name}</p>
+                        </Link>
                      </div>
                   ))}
                </div>
@@ -59,7 +65,7 @@ function MainMap() {
                                  <TableCell component="th" scope="row">
                                     {row.name}
                                  </TableCell>
-                                 <TableCell className="tableRow" align="center">
+                                 <TableCell className="tableRow" align="center" sx={{ p: 0 }}>
                                     <img src={'https://openweathermap.org/img/wn/' + row.icon + '.png'} alt="icon" height="30px" />
                                     &nbsp;{row.description}
                                  </TableCell>
@@ -70,6 +76,7 @@ function MainMap() {
                         </TableBody>
                      </Table>
                   </TableContainer>
+                  <Youtube videoId={video.items[0].snippet.resourceId.videoId} opts={{ height: '300px', width: '588px' }} style={{ margin: '20px 10px' }} />
                </div>
             </div>
          )}
