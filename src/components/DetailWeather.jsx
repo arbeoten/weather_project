@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchDetailWeather, fetchWeather, fetchAirPollution } from '../features/weatherSlice'
 import AirPollution from './AirPollution'
-
+import naming from '../func/naming'
 import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
@@ -61,6 +61,7 @@ function DetailWeather() {
    if (error) return <p>Error: {error}</p>
 
    console.log(airPollution)
+   let date = new Date()
 
    return (
       <>
@@ -68,16 +69,16 @@ function DetailWeather() {
             <Box sx={{ flexGrow: 1 }}>
                <Grid container spacing={1}>
                   <Grid size={6}>
-                     <Item>
-                        <p>{Date()}</p>
+                     <Item sx={{ height: '90%', display: 'flex', flexDirection: 'column', justifyContent: 'center', fontSize: '1em' }}>
+                        <p>{date.toLocaleString()}</p>
                         <h2>
-                           {city},<img src={'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'} alt="icon" style={{ marginBottom: '-15px' }} />
+                           {naming(city)},<img src={'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'} alt="icon" style={{ marginBottom: '-15px' }} />
                            {weather.main.temp}℃
                         </h2>
                      </Item>
                   </Grid>
                   <Grid size={6}>
-                     <Item>
+                     <Item sx={{ height: '90%' }}>
                         <AirPollution
                            so2={airPollution.list[0].components.so2}
                            no2={airPollution.list[0].components.no2}

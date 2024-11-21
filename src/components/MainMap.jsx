@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchAllWeathers } from '../features/weatherSlice'
 import { fetchYoutube } from '../features/youtubeSlice'
+import naming from '../func/naming'
 import { Link } from 'react-router-dom'
 import Youtube from 'react-youtube'
 import Table from '@mui/material/Table'
@@ -43,7 +44,7 @@ function MainMap() {
                         <Link to={'/detail/' + weather.name}>
                            <img src={'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png'} alt="city" />
                            <p>{weather.main.temp.toFixed(1)}℃</p>
-                           <p>{weather.name}</p>
+                           <p>{naming(weather.name)}</p>
                         </Link>
                      </div>
                   ))}
@@ -63,7 +64,7 @@ function MainMap() {
                            {rows.map((row) => (
                               <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                  <TableCell component="th" scope="row">
-                                    {row.name}
+                                    {naming(row.name)}
                                  </TableCell>
                                  <TableCell className="tableRow" align="center" sx={{ p: 0 }}>
                                     <img src={'https://openweathermap.org/img/wn/' + row.icon + '.png'} alt="icon" height="30px" />
