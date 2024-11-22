@@ -69,7 +69,7 @@ function AirPollution({ so2, no2, pm10, pm25, o3, co, aqi }) {
          case '보통':
             return '#ff9e80'
          case '나쁨':
-            return '#fafafa'
+            return '#ff6e40'
          case '매우나쁨':
             return '#ff3d00'
       }
