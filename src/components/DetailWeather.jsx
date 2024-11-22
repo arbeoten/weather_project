@@ -31,9 +31,6 @@ function DetailWeather() {
 
    useEffect(() => {
       dispatch(fetchDetailWeather(city))
-   }, [dispatch, city])
-
-   useEffect(() => {
       const fetchData = async () => {
          await dispatch(fetchWeather(city))
       }
